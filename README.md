@@ -20,7 +20,29 @@
 
 ### Дублирование ресурсов.
 
-Есть несколько ресурсов с похожими именами: `all.min.css`, `all.min.js`, `app.js`, - и имеющих похожее содержание (например, частично совпадают названия css-классов в `all.min.css`):
+Два раза отправляется `GET-запрос 1077477&_embed`:
+
+![query_embed](DevTools/Network/query_embed.png)
+
+Многие одинаковых запросов и скриптов от гугла и яндекса.
+
+![google_same1](DevTools/Network/google_same1.png)
+![google_same2](DevTools/Network/google_same2.png)
+![yandex_same1](DevTools/Network/yandex_same1.png)
+
+Но вообще сложно определить, один ли и тот же запрос отправляется или нет. Например, есть ряд "похожих" запросов, где похоже все кроме, одного параметра. Возможно, этот параметр отличает "уникальность" содержимого запроса и он по разному обрабатывается. А может это просто порядковый номер запроса или хэш, определяющий уникальность запроса, но не его содержимого, и тогда этот запрос можно считать лишним.
+
+![google_maybe1](DevTools/Network/google_maybe1.png)
+![google_maybe2](DevTools/Network/google_maybe2.png)
+![google_maybe3](DevTools/Network/google_maybe3.png)
+
+Вот здесь, например, отличается параметр id - запрос идет за разными баннерами.
+![yandex_other1](DevTools/Network/yandex_other1.png)
+
+Но в целом, кажется, что необходим опыт работы с рекламными сервисами Google/Yandex, чтобы разобраться в том, является ли тот или иной запрос уникальным или лишним.
+
+
+ С запросами непосредственно к lifehacker.ru, тоже все неоднозначно. Например, есть несколько ресурсов с похожими именами: `all.min.css`, `all.min.js`, `app.js`, - и имеющих похожее содержание (например, частично совпадают названия css-классов в `all.min.css`):
 
 ![all](DevTools/Network/all.min.png)
 ![app](DevTools/Network/app.js.png)
@@ -29,6 +51,7 @@
 
 ![all](DevTools/Network/all.png)
 ![app](DevTools/Network/app.png)
+
 
 ### Лишний размер ресурсов
 
